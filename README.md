@@ -91,7 +91,9 @@ Business requirement 2 information
 
 
 ## Page 4: Project Hypothesis and Validation
-Bloack for each project hypothesis, describe the conclusion and how you validated.
+I suspect mildew infected leaves has cloudy residue on the leaf, typically the colour of the leaf, that can differentiate, from a healthy leaf.
+An Image Montage, shows that typically a infected leaf has white powder across or spotted the leaf.
+Average Image, Variability Image and Difference between averages studies didn't reveal any clear pattern to differentiate one to another.
 
 
 ## Page 5: ML Performance Metrics
