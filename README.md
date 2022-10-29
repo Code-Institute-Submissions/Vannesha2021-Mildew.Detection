@@ -1,108 +1,100 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Dataset Content
+The dataset contains a total of 2104 images of leaves taken from cherry trees in the Farmy & Foods plantations. The leafs in the inages are either infected with powdered mildew or healthy leaves.
 
-Welcome Vannesha,
+# Business Requirements
+As a Data Analyst student from Code Institute, I was asked to develop an ML system that can instantly, using a leaf image, detect if a tree is healthy or has powdery mildew for an agricultural company. Their cherry plantations were showing powdery mildew, a fungal disease affecting a wide range of plants. They needed this ML system because they were spending too much time manually inspecting each tree.
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+1 - The client is interested in conducting a study to visually differentiate a cherry leaf that is healthy from one that contains powdery mildew.
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
+2 - The client is interested in predicting if a cherry tree is healthy or contains powdery mildew.
 
-## Gitpod Reminders
+# Hypothesis and how to validate?
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+I suspect that powdery mildew infected leaves typically has whiteish spots on leaves differentiating them from uninfected leaves.
+An average image study can help evaluate its rationale for mapping the business requirements to Data Visualizations and Machine Learning tasks.
 
-`python3 -m http.server`
+# Business Requirement 1: Data Visualization
 
-A blue button should appear to click: _Make Public_,
+- I will display the "mean" and "standard deviation" images for powdery-mildew contained
+and healthy leaves.
 
-Another blue button should appear to click: _Open Browser_.
+- I will display the difference between an average powdery mildew-contained leaf and an average healthy leaf.
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+- I will display an image montage for either healthy or a powdery-mildew leaf.
 
-A blue button should appear to click: _Make Public_,
+# Business Requirement 2: Classification
 
-Another blue button should appear to click: _Open Browser_.
+- We want to predict if a given leaf has powdery-mildew or not.
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+- We want to build a binary classifier and generate reports.
 
-To log into the Heroku toolbelt CLI:
+# ML Business Case
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+Powdery Mildew Clf
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+- I want a ML model to predict if a leaf is infected with powdery mildew or not, based on historical image data. It is a supervised model, a 2-class, single-label, classification model.
 
-------
+- Our ideal outcome is provide the employees a faster and reliable diagnostic if a given leaf is infected or not with powdery mildew.
 
-## Release History
+- The model success metrics are
+-- Accuracy of 65% or above on the test set.
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+- The model output is defined as a flag, indicating if the leaf has powedery mildew or not and the associated probability of being infected or not. The planation employees pick leaves from the plantations and upload the picture to the App. This is a real-time prediction (not a batch prediction).
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+- Heuristics: Currently, the process to check if the tree is infected with powdery midew is to manually verify if a given cherry tree contains powdery mildew. An employee spends around 30 minutes in each tree, taking a few samples of tree leaves and verifying visually if the leaf tree is healthy or has powdery mildew. If it has powdery mildew, the employee applies a specific compound to kill the fungus. The time spent applying this compound is 1 minute. The company has thousands of cherry trees located in multiple farms across the country. As a result, this manual process is not scalable due to time spent in the manual process inspection.
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+- The training data to fit the model come from Kaggle Website. This dataset contains about 4 thousand images. We have extracted a subset of 4208 images from this dataset and saved it to kaggle dataset directory for quicker model training.
+Train data - target: healthy or not; features: all images
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+# Dashboard Design (Streamlit App User Interface)
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
+## Page 1: Quick Project Summary
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+**General Information**
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+- Mildew is a fungal disease that is affecting the cherry plantations at Farmy & Foods. A powdery mildew is a fungus that attacks plants, causing a white, dusty coating on leaves, stems, and flowers.
+- A random set of leaves was collected and examined by raw eyes. Visual criteria are used to detect powdery mildew.
+- Powdery mildew may cause leaves to turn completely yellow, die, and fall off, which may expose fruit to sunburn. On some plants, powdery mildew may cause leaves to twist, buckle, or otherwise be deformed.
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+**Project Dataset**
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+- The available dataset contains 4208 images taken from the cherry tress in the Farmy & Foods planatations.
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+- Link to further information
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+**Business requirements**
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+1 - The client is interested in conducting a study to visually differentiate a cherry leaf that is healthy from one that contains powdery mildew.
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+2 - The client is interested in predicting if a cherry tree is healthy or contains powdery mildew.
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+## Page 2: Cells Visualizer
 
-------
+This will answer business requirement 1:
+- Checkbox 1 - Difference between average and variability image
+- Checkbox 2 - Differences between average powdered mildew and healthy leaves
+- Checkbox 3 - Image Montage
 
-## FAQ about the uptime script
 
-**Why have you added this script?**
+## Page 3: Malaria Detector
 
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
+Business requirement 2 information
 
-**How will this affect me?**
+ - The client is interested in predicting if a cherry tree is healthy or contains powdery mildew.
 
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
+- Link to download a set of healthy and mildew infected leaf images for live prediction.
 
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
+- Create a user interface with a file uploader widget. The user should upload multiple leaf images. It will display the image and a prediction statement, indicating if the tree is infected or not with powdery mildew and the probability associated with this statement.
+- Table with the image name and prediction results.
+- Download button to download table.
 
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
 
-**So….?**
+## Page 4: Project Hypothesis and Validation
+Bloack for each project hypothesis, describe the conclusion and how you validated.
 
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
 
-**Can I opt out?**
-
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
-
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
-
-**Anything more?**
-
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
-
----
-
-Happy coding!
+## Page 5: ML Performance Metrics
+Label Frequencies for Train, Validation and Test Sets
+Model History - Accuracy and Losses
+Model evaluation result
