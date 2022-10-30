@@ -142,3 +142,9 @@ Heroku - Cloud Hosting platform
 **Deployment**
 
 This app was deployed using Heroku. The first tep was to create an app with Heroku, the I linked my repo to the app in Heroku and clicked "Deploy", this project was deployed a manually.
+
+**Credits**
+
+- Code Institute
+- Gyan Shashwat, machine learning analytics developer at Code Institute.
+- niel_ci from the Slack Platform
